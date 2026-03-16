@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Strapi (server)
+server/.tmp/
+server/build/
+server/dist/
+server/.cache/
+
+# Next.js (client)
+client/.next/
+client/out/
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+
+# OS and editor
+.DS_Store
+*.log
+
+# Lockfiles (optional: remove if you want to commit them)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
