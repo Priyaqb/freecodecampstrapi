@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_banner_hero_blog_banners",
+  "info": {
+    "displayName": "Hero blog banner"
+  },
+  "options": {},
+  "attributes": {
+    "blogpublishingdate": {
+      "type": "datetime"
+    },
+    "timetoread": {
+      "type": "string"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::author.author"
+    }
+  },
+  "config": {}
+}
