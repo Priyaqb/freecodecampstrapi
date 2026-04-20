@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "white_paper_pages",
+  "info": {
+    "singularName": "white-paper-page",
+    "pluralName": "white-paper-pages",
+    "displayName": "White Paper Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "LeftBlockText": {
+      "type": "richtext"
+    },
+    "hubspotid": {
+      "type": "string"
+    },
+    "Banner": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "RightBlock": {
+      "type": "richtext"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    }
+  }
+}
