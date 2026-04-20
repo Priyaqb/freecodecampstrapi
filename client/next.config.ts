@@ -14,6 +14,12 @@ const nextConfig: NextConfig = {
         ...(strapiPort ? { port: strapiPort } : {}),
         pathname: "/uploads/**",
       },
+      // Strapi Cloud serves media from a separate CDN subdomain (*.media.strapiapp.com)
+      {
+        protocol: "https",
+        hostname: "**.media.strapiapp.com",
+        pathname: "/**",
+      },
     ],
     dangerouslyAllowSVG: false,
     unoptimized: process.env.NODE_ENV === "development",
