@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://127.0.0.1:1337";
-const API_URL = `${STRAPI_URL}/api/blog-pages`;
+const API_URL = `${STRAPI_URL}/api/blog-pages?populate[featuredimage]=true&populate[Banner][populate][thumbnail]=true`;
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +20,10 @@ type BlogEntry = {
   } | null;
   Banner?: {
     blogpublishingdate?: string | null;
+    thumbnail?: Array<{
+      url: string;
+      alternativeText: string | null;
+    }> | null;
   } | null;
 };
 
@@ -68,17 +72,19 @@ export default async function BlogsPage() {
       <ul className="flex flex-wrap gap-6">
         {blogs.map((blog) => {
           const date = blog.Banner?.blogpublishingdate ?? blog.publishedAt;
+          const thumbnail = blog.Banner?.thumbnail?.[0];
+          const cardImage = thumbnail ?? blog.featuredimage ?? null;
           return (
             <li key={blog.documentId} className="w-[400px]">
               <Link
                 href={`/blogs/${blog.slug ?? blog.documentId}`}
                 className="block h-full rounded-xl border border-gray-200 hover:border-gray-400 hover:shadow-sm transition-all overflow-hidden"
               >
-                {blog.featuredimage?.url && (
+                {cardImage?.url && (
                   <div className="relative w-full h-48">
                     <Image
-                      src={mediaUrl(blog.featuredimage.url)}
-                      alt={blog.featuredimage.alternativeText ?? blog.blogtitle ?? ""}
+                      src={mediaUrl(cardImage.url)}
+                      alt={cardImage.alternativeText ?? blog.blogtitle ?? ""}
                       fill
                       className="object-cover"
                     />
