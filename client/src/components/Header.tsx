@@ -12,7 +12,7 @@ export default function Header() {
             href="/blogs"
             className="text-gray-600 hover:text-gray-900 transition-colors"
           >
-            Blog
+            Blogs
           </Link>
           <Link
             href="/whitepapers"
