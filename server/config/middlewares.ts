@@ -4,7 +4,16 @@ const config: Core.Config.Middlewares = [
   'strapi::logger',
   'strapi::errors',
   'strapi::security',
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: [
+        'http://localhost:3000',
+        'https://freecodecampstrapi.vercel.app',
+        process.env.ALLOWED_ORIGINS ?? '',
+      ].filter(Boolean),
+    },
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
